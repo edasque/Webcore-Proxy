@@ -21,7 +21,7 @@ var annotations = {
 }
 
 var SDC = require("statsd-client"),
-  sdc = new SDC({ host: config.statsd.statsdHost, port: config.statsd.Port, debug: config.statsd.statsdDebug });
+  sdc = new SDC({ host: config.statsd.statsdHost, port: config.statsd.statsdPort, debug: config.statsd.statsdDebug });
 
 // parse application/json
 app.use(bodyParser.json())
@@ -36,7 +36,7 @@ app.get("/", (req, res) => res.sendStatus(404));
 // }
 
 app.post("/gauge", function(req, res) {
-  console.log("Gauge");
+  console.log("Gauge:");
   console.log(req.body);
   const JSONbody = req.body;
   const metricValue = JSONbody.metricValue;
@@ -50,35 +50,30 @@ app.post("/gauge", function(req, res) {
   }
 });
 app.post("/annotations", function(req, res) {
-  console.log("Annotation")
+  console.log("Annotation:")
   console.log(req.body);
   const JSONbody = req.body
-  console.log("Tags")
-
-  console.dir(JSONbody.tags)
-  console.log("Text")
-
-  console.log(JSONbody.text)
-  var str = JSONbody.tags
-  // str = "{\"tags\":"+str.replace(/\'/g, '"')+"}"
-  str = str.replace(/\'/g, '"')
-
-  console.log("Tags replaced")
-  console.log(str)
-
-  const tags = JSON.parse(str)
+  const tags = JSONbody.tags
   const text = JSONbody.text
 
-  console.dir(tags)
-  // console.log(tags)
-  // console.log(tags[1])
+  // console.log("Tags:")
+  // console.dir(tags)
+
+  // console.log("Text:")
+  // console.dir(text)
+
   if (text && tags) {
     res.send("OK")
     var body = {
       time: Date.now(),
       tags: tags,
       text: text
-    };
+    }
+    // console.log("body:")
+    // console.dir(body)
+    // console.log("body in JSON:")
+    // console.log(JSON.stringify(body))
+
     annotations.headers.Authorization = config.annotations.grafana_Authorization
 
     fetch(
