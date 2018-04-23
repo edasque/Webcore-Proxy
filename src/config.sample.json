@@ -1,0 +1,15 @@
+{
+  "serverPort": 3000,
+  "statsd": {
+    "statsdHost": "statsd_host",
+    "statsdPort": "statsd_post_typically_8125",
+    "statsdDebug": true
+  },
+  "annotations": {
+    "protocol":"https",
+    "hostname": "grafana_server",
+    "port": "grafana_public_port",
+    "grafana_Authorization":
+      "grafana API key"
+  }
+}

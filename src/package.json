@@ -1,0 +1,18 @@
+{
+  "name": "iot.webcore.proxy",
+  "version": "0.0.1",
+  "description": "From webcore to statsd",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "node-fetch": "^2.1.2",
+    "read-config": "^2.0.0",
+    "statsd-client": "^0.4.0"
+  }
+}

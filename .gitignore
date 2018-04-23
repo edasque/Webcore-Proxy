@@ -1,0 +1,5 @@
+src/config.json
+Dockerfile.snow
+Grafana.paw
+src/node_modules/*
+.DS_Store
