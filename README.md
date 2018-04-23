@@ -28,7 +28,7 @@ Tested on node.js 8.9.x
 ## Docker
 
 Build the image this way:
-```docker build -t webcore-proxy:latest -t webcore-proxy:0.3 .```
+```docker build -t webcore-proxy:latest -t webcore-proxy:0.4 .```
 
 and run on docker this way (if you want to keep the external prot to 3000)
 ```docker run -d -p 3000:3000 --name webcore_proxy webcore-proxy```
